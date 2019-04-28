@@ -1,5 +1,6 @@
 {
   "name": "population_of_prefs",
+  "jpName": "都道府県別総人口推移グラフ",
   "version": "1.0.0",
   "description": "population stats by prefecture",
   "author": "Tomoyuki Asaeda",
