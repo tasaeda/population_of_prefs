@@ -63,6 +63,8 @@
 </template>
 
 <script>
+const pkg = require('../package')
+
 export default {
   data() {
     return {
@@ -71,9 +73,14 @@ export default {
       fixed: false,
       items: [
         {
+          icon: 'multiline_chart',
+          title: pkg.jpName,
+          to: '/'
+        },
+        {
           icon: 'apps',
           title: 'Welcome',
-          to: '/'
+          to: '/about'
         },
         {
           icon: 'bubble_chart',
@@ -84,7 +91,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: pkg.jpName
     }
   }
 }
