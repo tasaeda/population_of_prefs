@@ -56,18 +56,23 @@ export const actions = {
     commit('setSelectedPrefs', selected)
     commit('resetPopulation')
 
-    _.each(selected, async function(pref) {
-      await dispatch('getYearsAndPopulation', pref)
+    _.each(selected, function(pref, index) {
+      dispatch('getYearsAndPopulation', {
+        pref: pref,
+        isLast: selected.length === index + 1
+      })
     })
 
     return state.datacollection
   },
-  async getYearsAndPopulation({ commit, dispatch }, pref) {
-    const items = await fetchYearsAndPopulation(pref)
+  async getYearsAndPopulation({ state, commit, dispatch }, target) {
+    const items = await fetchYearsAndPopulation(target.pref)
     commit('setYears', items.years)
     commit('setPopulation', items.population)
 
-    dispatch('setDataCollection')
+    if (target.isLast) {
+      dispatch('setDataCollection')
+    }
   },
   setDataCollection({ state, commit }) {
     commit('setDataCollection', {
@@ -76,6 +81,8 @@ export const actions = {
     })
   }
 }
+
+export const strict = false
 
 const axios = axiosBase.create({
   baseURL: 'https://opendata.resas-portal.go.jp',
@@ -141,11 +148,20 @@ function getPopulation(state) {
   const arr = []
 
   _.each(state.population, item => {
+    const red = getRandomInt()
+    const green = getRandomInt()
+    const blue = getRandomInt()
+
     arr.push({
-      backgroundColor: `rgba(${getRandomInt()}, ${getRandomInt()}, ${getRandomInt()}, 0.2)`,
+      backgroundColor: `rgba(${red}, ${green}, ${blue}, 0.1)`,
+      borderColor: `rgba(${red}, ${green}, ${blue}, 1)`,
       label: item.label,
       data: Object.values(item.data)
     })
+  })
+
+  arr.sort(function(a, b) {
+    return a.data[11] - b.data[11]
   })
 
   return arr

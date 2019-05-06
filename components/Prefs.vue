@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <span v-for="item in selectedHtml" :key="item">{{ item }}</span>
+      <span>{{ selectedHtml }}</span>
     </div>
     <v-container fluid grid-list-sm>
       <v-layout row wrap>
@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     selectedHtml: function() {
-      return _.join(this.selected, ' / ')
+      return '都道府県: ' + _.join(Object.values(this.selected), ' / ')
     }
   },
   methods: {
