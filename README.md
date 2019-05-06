@@ -1,6 +1,15 @@
 # population_of_prefs
 
-> population stats by prefecture
+動作は以下より確認できます。
+https://pop4yumemi.netlify.com
+
+## 構成
+
+Vue.jsを使用
+
+- フレームワーク: Nuxt.js
+- HTTPクライアント: Axios
+- グラフライブラリ: Chart.js (vue-chartjs)
 
 ## Build Setup
 
