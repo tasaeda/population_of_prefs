@@ -1,6 +1,9 @@
 import _ from 'lodash'
 import axiosBase from 'axios'
 
+// STATE
+// -------------------------------------------------------------
+
 export const state = () => ({
   datacollection: {},
   prefs: [],
@@ -25,6 +28,9 @@ export const getters = {
   }
 }
 
+// MUTATIONS
+// -------------------------------------------------------------
+
 export const mutations = {
   setPrefs(state, prefs) {
     state.prefs = prefs
@@ -45,6 +51,9 @@ export const mutations = {
     state.datacollection = datacollection
   }
 }
+
+// ACTIONS
+// -------------------------------------------------------------
 
 export const actions = {
   getPrefs({ commit }) {
@@ -83,6 +92,9 @@ export const actions = {
 }
 
 export const strict = false
+
+// PRIVATE FUNCS
+// -------------------------------------------------------------
 
 const axios = axiosBase.create({
   baseURL: 'https://opendata.resas-portal.go.jp',

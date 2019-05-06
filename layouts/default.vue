@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -76,16 +76,6 @@ export default {
           icon: 'multiline_chart',
           title: pkg.jpName,
           to: '/'
-        },
-        {
-          icon: 'apps',
-          title: 'Welcome',
-          to: '/about'
-        },
-        {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
         }
       ],
       miniVariant: false,
