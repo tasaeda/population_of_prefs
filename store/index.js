@@ -71,11 +71,9 @@ export const actions = {
         isLast: selected.length === index + 1
       })
     })
-
-    return state.datacollection
   },
   async getYearsAndPopulation({ state, commit, dispatch }, target) {
-    const items = await fetchYearsAndPopulation(target.pref)
+    const items = await fetchYearsAndPopulation(target.pref, state.prefs)
     commit('setYears', items.years)
     commit('setPopulation', items.population)
 
@@ -117,18 +115,11 @@ async function fetchPrefs() {
   return items
 }
 
-async function fetchYearsAndPopulation(prefName) {
+async function fetchYearsAndPopulation(prefCode, prefs) {
   const items = {
-    prefs: null,
     population: null,
     years: null
   }
-
-  await axios.get('/api/v1/prefectures').then(response => {
-    items.prefs = response.data.result
-  })
-  const prefCode =
-    1 + _.findIndex(items.prefs, pref => pref.prefName === prefName)
 
   await axios
     .get(
@@ -139,7 +130,7 @@ async function fetchYearsAndPopulation(prefName) {
         return item.value
       })
       items.population = {
-        label: prefName,
+        label: prefs[prefCode - 1].prefName,
         data: populationTmp
       }
       items.years = _.map(response.data.result.data[0].data, item => {
