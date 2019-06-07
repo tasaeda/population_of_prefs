@@ -1,6 +1,6 @@
 # population_of_prefs
 
-動作は以下より確認できます。 
+動作は以下より確認できます。  
 https://popofprefs.netlify.com
 
 ## 構成
