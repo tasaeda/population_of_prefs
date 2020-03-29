@@ -26,18 +26,18 @@
     </v-navigation-drawer>
     <v-toolbar :clipped-left="clipped" fixed app>
       <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
+      <v-btn @click.stop="miniVariant = !miniVariant" icon>
         <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
+      <v-btn @click.stop="clipped = !clipped" icon>
         <v-icon>web</v-icon>
       </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
+      <v-btn @click.stop="fixed = !fixed" icon>
         <v-icon>remove</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
+      <v-btn @click.stop="rightDrawer = !rightDrawer" icon>
         <v-icon>menu</v-icon>
       </v-btn>
     </v-toolbar>
