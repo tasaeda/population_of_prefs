@@ -21,7 +21,7 @@
     "express": "^4.19.2",
     "lodash": "^4.17.21",
     "lodash.template": "^4.5.0",
-    "nuxt": "^3.12.4",
+    "nuxt": "^3.16.0",
     "vue-chartjs": "^3.4.2",
     "vuetify": "^1.5.5",
     "vuetify-loader": "^1.2.1"
